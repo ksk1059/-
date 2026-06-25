@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+  <button id="quit" title="종료 (ESC)">✕</button>
+  <button id="mic" title="마이크 켜기/끄기">🎤 ON</button>
+  <div id="stage">
+    <div id="ripple"></div>
+    <img id="logo" src="Profile.svg" alt="돌쇠">
+  </div>
+  <div id="captions">
+    <div id="thinking"><span></span><span></span><span></span></div>
+    <div id="bot"></div>
+    <div id="user"></div>
+  </div>
+  <form id="inputbar">
+    <input id="text" type="text" placeholder="여기에 타이핑…" autocomplete="off">
+    <button type="submit">전송</button>
+  </form>
+  <script src="app.js"></script>
+</body>
+</html>

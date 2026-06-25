@@ -1,0 +1,12 @@
+faster-whisper==1.0.3
+requests==2.34.2
+ollama==0.3.3
+mediapipe==0.10.14
+opencv-python==4.10.0.84
+sounddevice==0.4.7
+numpy==1.26.4
+pywebview==5.2
+pytest==8.3.2
+# TTS: MeloTTS (한국어) — 별도 설치, setup 참고
+#   pip install git+https://github.com/myshell-ai/MeloTTS.git
+#   python -m unidic download
