@@ -7,6 +7,28 @@ import os, json, re, threading, time
 _FACT = re.compile(
     r"좋아|싫어|이름|나는|난\s|내가|취미|전공|사는|살아|일해|먹|관심|꿈|목표|살이|학교|회사")
 
+# 말투 기본값 (부모가 안 가르쳐도 격식체 탈피) + 본보기 보관 상한
+DEFAULT_STYLE = "친근한 반말로 짧고 자연스럽게. 존댓말·격식체·딱딱한 설명체 금지. 이모지 남발 금지."
+STYLE_EXEMPLAR_MAX = 8
+
+# 말투 지시 트리거 ("말투 ~", "이렇게 말해", "~하게 말해")
+_STYLE_CMD = re.compile(r"말투|이렇게\s*말해|말하는\s*법|이런\s*식으로\s*말|반말로|더\s*\S+하게\s*말")
+# 학습된 말투가 존댓말 지향이면 반말 강제(banmalify)를 끔 → 후처리가 학습에 종속됨
+_FORMAL_HINT = re.compile(r"존댓말|높임|정중|공손|예의|격식")
+_CASUAL_HINT = re.compile(r"반말")
+
+
+def extract_style(text):
+    # 명시적 말투 지시면 규칙 내용 반환, 아니면 None
+    t = (text or "").strip()
+    if not _STYLE_CMD.search(t) or t.endswith("?"):
+        return None
+    rule = re.sub(r"말투(는|를|은|이|가)?|이렇게\s*말해(줘|라)?|말하는\s*법|이런\s*식으로\s*말해?",
+                  "", t)
+    rule = re.sub(r"\s+", " ", rule).strip(" :,.!~·-")
+    return rule if len(rule) >= 2 else t  # 너무 짧으면 원문 통째 규칙으로
+
+
 # 영구 고정("기억해/외워/잊지마") 트리거 + 사실 추출
 _PIN = re.compile(
     r"(영구(히|하게)?\s*)?(기억\s*해\s*(둬|줘|주라|줄래)?|외워\s*(둬|줘)?|잊지\s*마라?|명심해|꼭\s*기억해?)")
@@ -65,7 +87,46 @@ class ConversationMemory:
         self.hot = []   # [{role, text, ts, imp}]  role: "user"|"bot"
         self.warm = []  # [{text, ts, imp}]  압축된 요약
         self.core = []  # [{text, ts}]  영구 고정 기억 — 절대 소멸 안 함, 항상 주입
+        self.style = []  # [{kind:'directive'|'exemplar', text, ts}]  말투 (부모가 학습)
         self._load()
+
+    # --- 말투(부모가 가르치는 화법) ---
+    def add_style(self, kind, text):
+        text = (text or "").strip()
+        if not text:
+            return False
+        with self._lock:
+            if any(s["kind"] == kind and s["text"] == text for s in self.style):
+                return False
+            self.style.append({"kind": kind, "text": text, "ts": time.time()})
+            if kind == "exemplar":  # 본보기는 최근 N개만 (롤링)
+                ex = [s for s in self.style if s["kind"] == "exemplar"]
+                for old in ex[:-STYLE_EXEMPLAR_MAX]:
+                    self.style.remove(old)
+            self._save()
+            return True
+
+    def register(self):
+        # 학습된 말투의 격식 수준. 부모가 존댓말을 가르쳤으면 'formal' → 반말강제 끔.
+        # 가장 최근 지시 우선. 기본은 'casual'(반말).
+        for s in reversed(self.style):
+            if s["kind"] != "directive":
+                continue
+            if _CASUAL_HINT.search(s["text"]):
+                return "casual"
+            if _FORMAL_HINT.search(s["text"]):
+                return "formal"
+        return "casual"
+
+    def style_block(self):
+        directives = [s["text"] for s in self.style if s["kind"] == "directive"] or [DEFAULT_STYLE]
+        exem = [s["text"] for s in self.style if s["kind"] == "exemplar"]
+        txt = ("지금부터 아래 말투로만 대답해라. 직전까지 격식체/존댓말로 말했어도 무조건 이 말투로 바꿔라.\n"
+               "말투 규칙: " + " / ".join(directives))
+        if exem:
+            txt += ("\n이 사람 말투를 그대로 흉내내라 (어휘·어미·분위기):\n"
+                    + "\n".join(f"- {e}" for e in exem))
+        return txt
 
     # --- 영구 고정 기억 ---
     def pin(self, text):
@@ -117,6 +178,8 @@ class ConversationMemory:
             for t in self.hot:
                 role = "assistant" if t["role"] == "bot" else "user"
                 msgs.append({"role": role, "content": t["text"]})
+            # 말투는 가장 마지막 시스템 지시로 (이력의 격식체를 최근성으로 덮어씀)
+            msgs.append({"role": "system", "content": self.style_block()})
             msgs.append({"role": "user", "content": user_text})
             return msgs
 
@@ -166,6 +229,7 @@ class ConversationMemory:
                 self.hot = d.get("hot", [])
                 self.warm = d.get("warm", [])
                 self.core = d.get("core", [])
+                self.style = d.get("style", [])
             except Exception:
                 pass
 
@@ -175,7 +239,7 @@ class ConversationMemory:
         try:
             os.makedirs(os.path.dirname(self._path), exist_ok=True)
             with open(self._path, "w", encoding="utf-8") as f:
-                json.dump({"hot": self.hot, "warm": self.warm, "core": self.core},
-                          f, ensure_ascii=False)
+                json.dump({"hot": self.hot, "warm": self.warm, "core": self.core,
+                           "style": self.style}, f, ensure_ascii=False)
         except Exception:
             pass

@@ -22,7 +22,7 @@ from dolswe.stt import SttWorker
 from dolswe.vision_world import VisionWorld
 from dolswe.perception import Perception
 from dolswe.teach import TeachStore, parse_label, is_teaching
-from dolswe.memory import extract_pin
+from dolswe.memory import extract_pin, extract_style
 from dolswe import preview
 
 import re as _re
@@ -54,6 +54,7 @@ class Dolswe:
         self._gen = 0  # FIX 4: barge-in generation counter
         self._responding = False  # 응답 처리 중이면 인사 양보
         self._preview_on = False  # 카메라 프리뷰 창 on/off
+        self._parent = False      # 부모(트레이너) 모드 — 비밀문구로 진입, 말투/CORE 학습
 
     def _open_camera(self):
         # Win11에서 기본 MSMF 백엔드는 멈추거나 못 여는 경우 많음 → DSHOW 우선, 0~3 스캔
@@ -166,10 +167,16 @@ class Dolswe:
         self._set_speaking(False)
         self._bump_generation()
         self._js(f"dolswe.setUserCaption({json.dumps(text, ensure_ascii=False)})")
-        if self._try_teach(text):   # 가르침이면 LLM 안 거치고 바로 학습+확인
+        if self._toggle_parent(text):  # "학습모드" → 부모모드 on/off
             return
-        if self._try_pin(text):     # "기억해" 류 → 영구 고정 기억
+        if self._try_teach(text):   # 지각(손짓/사물) 가르침 — 누구나 가능
             return
+        if self._parent:            # 부모만: 말투·CORE 학습 + 발화 모방
+            if self._try_style(text):
+                return
+            if self._try_pin(text):
+                return
+            self.brain.memory.add_style("exemplar", text)  # 모방: 부모 화법 본보기 수집
         # 카메라 컨텍스트는 "물어볼 때만" 주입 → 안 물으면 혼잣말로 장면 안 떠듦
         self._enqueue(text, use_context=_wants_vision(text))
 
@@ -205,6 +212,30 @@ class Dolswe:
             return True
         return False
 
+    def _say_ack(self, text):
+        self._js(f"dolswe.setBotCaption({json.dumps(text, ensure_ascii=False)})")
+        if self.tts:
+            self.tts.say(text)
+
+    def _toggle_parent(self, text):
+        t = text.strip()
+        if "학습모드" not in t and "부모모드" not in t:
+            return False
+        off = any(x in t for x in ["끝", "종료", "꺼", "그만", "off", "해제"])
+        self._parent = not off
+        self._say_ack("학습모드 껐어." if off
+                      else "학습모드 켰어. 말투 가르쳐주거나 그냥 말 걸어. 따라 배울게.")
+        return True
+
+    def _try_style(self, text):
+        # 부모의 명시적 말투 지시 → directive 저장
+        rule = extract_style(text)
+        if not rule:
+            return False
+        self.brain.memory.add_style("directive", rule)
+        self._say_ack(f"말투 익혔어: {rule}")
+        return True
+
     def _try_pin(self, text):
         # "기억해/외워/잊지마" → 사실을 영구 CORE에 고정 (잔과 달리 소멸 안 함)
         fact = extract_pin(text)
@@ -220,12 +251,18 @@ class Dolswe:
     def on_user_text(self, text):          # pywebview API (타이핑)
         self._user_input(text)
 
+    def _muted(self):
+        return self.stt is not None and not self.stt.is_enabled()
+
     def _on_stt_final(self, text):
-        print(f"[input] STT -> {text!r}", flush=True)  # 출처 확인용 (mic off인데 들어오면 누수)
+        if self._muted():   # 음소거면 STT가 새도 입력 자체를 버림 (최종 방어선)
+            return
+        print(f"[input] STT -> {text!r}", flush=True)
         self._user_input(text)
 
     def _on_stt_partial(self, text):
-        # FIX 3: use json.dumps instead of repr
+        if self._muted():   # 음소거면 자막도 안 띄움
+            return
         self._js(f"dolswe.setUserCaption({json.dumps(text, ensure_ascii=False)})")
 
     def _on_new_person(self):

@@ -3,6 +3,40 @@ from dolswe.memory import (ConversationMemory, approx_tokens, extract_pin,
                            normalize_perspective)
 
 
+def test_style_default_and_directive():
+    from dolswe.memory import DEFAULT_STYLE
+    m = ConversationMemory(path=None)
+    assert DEFAULT_STYLE in m.style_block()      # 기본 말투 항상 존재
+    m.add_style("directive", "까불까불 장난스럽게")
+    blk = m.style_block()
+    assert "까불까불" in blk and DEFAULT_STYLE not in blk  # 지시 있으면 기본 대체
+
+
+def test_style_exemplar_rolling():
+    from dolswe.memory import STYLE_EXEMPLAR_MAX
+    m = ConversationMemory(path=None)
+    for i in range(STYLE_EXEMPLAR_MAX + 5):
+        m.add_style("exemplar", f"본보기 문장 {i}")
+    ex = [s for s in m.style if s["kind"] == "exemplar"]
+    assert len(ex) == STYLE_EXEMPLAR_MAX          # 최근 N개만 유지
+    assert ex[-1]["text"] == f"본보기 문장 {STYLE_EXEMPLAR_MAX + 4}"
+
+
+def test_register_follows_learning():
+    m = ConversationMemory(path=None)
+    assert m.register() == "casual"               # 기본 반말
+    m.add_style("directive", "존댓말로 정중하게")
+    assert m.register() == "formal"               # 학습 → 반말강제 끔
+    m.add_style("directive", "다시 반말로 편하게")
+    assert m.register() == "casual"               # 최근 지시 우선
+
+
+def test_extract_style():
+    from dolswe.memory import extract_style
+    assert extract_style("말투 더 까불까불하게 해") == "더 까불까불하게 해"
+    assert extract_style("그냥 잡담") is None
+
+
 def test_normalize_perspective():
     assert normalize_perspective("나는 너를 만들었어") == "사용자는 돌쇠를 만들었어"
     assert normalize_perspective("내 이름은 철수") == "사용자 이름은 철수"

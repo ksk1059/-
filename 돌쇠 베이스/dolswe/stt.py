@@ -91,7 +91,8 @@ class SttWorker:
                 silence += 1
                 buf.append(block)
                 if silence >= SILENCE_BLOCKS:
-                    self._transcribe(np.concatenate(buf).flatten())
+                    if self._enabled:  # 발화 끝 직전 OFF면 폐기
+                        self._transcribe(np.concatenate(buf).flatten())
                     buf, silence = [], 0
         if stream is not None:
             stream.stop(); stream.close()

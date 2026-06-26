@@ -4,6 +4,7 @@ from dolswe import config
 from dolswe.persona import build_context_line
 from dolswe.sentences import SentenceSplitter
 from dolswe.memory import ConversationMemory
+from dolswe.teach import _has_batchim
 
 # 출력 후처리: exaone이 시스템 프롬프트를 무시하고 모델 정체/시각 부정을 뱉을 때가
 # 있어, 새는 문장을 통째로 교체해 보장한다 (프롬프트만으론 못 막음).
@@ -15,6 +16,52 @@ _BAN_VIS = re.compile(
     r"|카메라.{0,12}(못|없|지원.{0,3}않|불가)"
     r"|볼\s*수\s*없|보지\s*못")
 _R_VIS = "응, 카메라로 앞을 봐."
+
+# 존댓말→반말 강제 변환 (exaone이 말투 지시를 무시하고 격식체를 고집해서 어미로 교정).
+# 격식 1인칭(저/제)도 반말(나/내)로.
+_HONOR_1ST = [
+    (re.compile(r"(?<![가-힣])저는(?![가-힣])"), "나는"),
+    (re.compile(r"(?<![가-힣])저도(?![가-힣])"), "나도"),
+    (re.compile(r"(?<![가-힣])저를(?![가-힣])"), "나를"),
+    (re.compile(r"(?<![가-힣])저의(?![가-힣])"), "내"),
+    (re.compile(r"(?<![가-힣])제가(?![가-힣])"), "내가"),
+    (re.compile(r"(?<![가-힣])저희(?![가-힣])"), "우리"),
+    (re.compile(r"(?<![가-힣])저(?=\s)"), "나"),
+]
+# 문장 끝 어미. 구체 규칙 먼저, 일반 "~요" 탈락 마지막.
+_BANMAL = [
+    (re.compile(r"있습니다([.!?…]*)$"), r"있어\1"),
+    (re.compile(r"없습니다([.!?…]*)$"), r"없어\1"),
+    (re.compile(r"습니다([.!?…]*)$"), r"어\1"),
+    (re.compile(r"습니까([.!?…]*)$"), r"어?"),
+    (re.compile(r"(이에요|예요)([.!?…]*)$"), r"야\2"),
+    (re.compile(r"거에요([.!?…]*)$"), r"거야\1"),
+    (re.compile(r"네요([.!?…]*)$"), r"네\1"),
+    (re.compile(r"군요([.!?…]*)$"), r"군\1"),
+    (re.compile(r"세요([.!?…]*)$"), r"어\1"),
+    (re.compile(r"([가-힣])죠([.!?…]*)$"), r"\1지\2"),
+    (re.compile(r"([가-힣])요([.!?…]*)$"), r"\1\2"),  # 해요체: 같아요→같아
+]
+_IPNIDA = re.compile(r"([가-힣])입니[다까]([.!?…]*)$")
+
+
+def _ipnida_sub(m):
+    stem = m.group(1)
+    return stem + ("이야" if _has_batchim(stem) else "야") + m.group(2)
+
+
+def banmalify(sentence):
+    s = sentence
+    for pat, repl in _HONOR_1ST:  # 저/제 → 나/내 (어디서나)
+        s = pat.sub(repl, s)
+    s2 = _IPNIDA.sub(_ipnida_sub, s)  # 입니다/입니까 → 받침규칙 (돌쇠야 / 사람이야)
+    if s2 != s:
+        return s2
+    for pat, repl in _BANMAL:  # 문장 끝 어미
+        new = pat.sub(repl, s)
+        if new != s:
+            return new
+    return s
 
 
 def redact(sentence):
@@ -93,11 +140,14 @@ class Brain:
         messages = build_messages(self.memory, user_text, snapshot)
         splitter = SentenceSplitter()
         spoken = ""  # 후처리(redact)된 실제 발화 — 메모리에도 정제본 저장
+        casual = self.memory.register() == "casual"  # 학습된 말투가 결정 (하드코딩 아님)
 
         def emit(sentence):
             s = redact(sentence)
             if s is None:        # 정체 누출 → 버림
                 return None
+            if casual:           # 반말 말투일 때만 강제 변환 (부모가 존댓말 가르치면 끔)
+                s = banmalify(s)
             # 대체문(_R_VIS)이 연달아 반복되면 한 번만
             if s == _R_VIS and spoken.rstrip().endswith(s):
                 return None
