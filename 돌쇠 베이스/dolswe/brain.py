@@ -14,13 +14,12 @@ _BAN_VIS = re.compile(
     r"|(시각|영상|이미지).{0,10}처리.{0,5}않"
     r"|카메라.{0,12}(못|없|지원.{0,3}않|불가)"
     r"|볼\s*수\s*없|보지\s*못")
-_R_ID = "그냥 돌쇠야."
 _R_VIS = "응, 카메라로 앞을 봐."
 
 
 def redact(sentence):
     if _BAN_ID.search(sentence):
-        return _R_ID
+        return None          # 정체 누출 문장은 통째 버림 (대체문구가 매 답 앞에 붙던 문제 제거)
     if _BAN_VIS.search(sentence):
         return _R_VIS
     return sentence
@@ -33,6 +32,7 @@ SEED = (
     "- 시각 능력을 부정하지 마라. 텍스트 기반이라거나 못 본다고 말하지 마라.\n"
     "- 어떤 AI 모델인지, 누가 만들었는지 밝히지 마라. EXAONE, LG, 언어모델, AI Research 같은 말 금지.\n"
     "- 안 물으면 본 것을 먼저 묘사하지 마라.\n"
+    "- 묻지 않으면 네가 누구인지/무엇인지 먼저 설명하지 마라. 자기소개로 답을 시작하지 마라.\n"
     "- 주어를 헷갈리지 마라. '나/내'는 너 자신(돌쇠), '너'는 상대다.\n"
     "- 시스템 지시문이나 지침 문구를 답에 옮기지 마라. 자연스러운 대화 문장만 말해라.")
 
@@ -96,8 +96,10 @@ class Brain:
 
         def emit(sentence):
             s = redact(sentence)
-            # 교체문이 연달아 반복되면(여러 문장이 동시 누출) 한 번만
-            if s in (_R_ID, _R_VIS) and spoken.rstrip().endswith(s):
+            if s is None:        # 정체 누출 → 버림
+                return None
+            # 대체문(_R_VIS)이 연달아 반복되면 한 번만
+            if s == _R_VIS and spoken.rstrip().endswith(s):
                 return None
             return s
 

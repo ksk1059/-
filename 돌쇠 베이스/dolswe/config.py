@@ -48,11 +48,12 @@ CAPTION_SECONDS = 3.0       # 사용자 자막 표시 시간
 WORLD_MODEL = "yolov8s-worldv2.pt"  # models/ 아래 (최초 자동 다운로드)
 WORLD_FPS = 2               # YOLO-World 처리 FPS (무거움 → 낮게)
 PERSON_CONF = 0.25          # 사람 카운트 신뢰도 임계
-SCENE_CONF = 0.30           # 사물 감지 신뢰도 임계 (0.10은 헛검출 폭주 → 올림)
+SCENE_CONF = 0.35           # 사물 감지 신뢰도 임계 (헛검출 줄이려 상향)
 # 감지할 항목 (영문 프롬프트 → 한국어 라벨). person은 인원수로 별도 처리.
+# (hat/cap 제거 — YOLO-World가 빈 배경에도 모자를 자꾸 환검출함)
 SCENE_ITEMS = [
     ("person", "사람"), ("glasses", "안경"), ("sunglasses", "선글라스"),
-    ("hat", "모자"), ("cap", "모자"), ("mask", "마스크"),
+    ("mask", "마스크"),
     ("cell phone", "휴대폰"), ("cup", "컵"), ("bottle", "병"),
     ("backpack", "가방"), ("handbag", "가방"), ("headphones", "헤드폰"),
     ("camera", "카메라"),
