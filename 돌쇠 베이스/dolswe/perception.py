@@ -18,7 +18,7 @@ class Perception:
         self._running = False
         self._thread = None
         self._hands = mp.solutions.hands.Hands(
-            max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.5)
+            max_num_hands=2, min_detection_confidence=0.4, min_tracking_confidence=0.4)
         self._clip = None          # lazy 로드 (사물 처음 볼 때만)
         self._clip_pre = None
         self._torch = None
@@ -26,6 +26,7 @@ class Perception:
         self._last_vec = None
         self._unknown_count = 0
         self._last_ask = -1e9
+        self.last_hand_pts = None  # 프리뷰용: 손 랜드마크 [(x,y) 정규화] 또는 None
 
     def start(self):
         self._running = True
@@ -88,8 +89,14 @@ class Perception:
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         res = self._hands.process(rgb)
         if res.multi_hand_landmarks:
-            xy = landmarks_to_xy(res.multi_hand_landmarks[0].landmark)
-            return "hand", normalize_hand(xy)
+            hands_xy = [landmarks_to_xy(h.landmark) for h in res.multi_hand_landmarks]
+            self.last_hand_pts = hands_xy  # 프리뷰: 검출된 손 전부
+            if len(hands_xy) >= 2:
+                # 손목 x로 좌→우 정렬해 순서 일관화 후 두 손 벡터 결합 (84차원)
+                two = sorted(hands_xy, key=lambda xy: xy[0][0])[:2]
+                return "hand2", normalize_hand(two[0]) + normalize_hand(two[1])
+            return "hand", normalize_hand(hands_xy[0])
+        self.last_hand_pts = None
         crop = self._ctx.snapshot().get("obj_crop")
         if crop is not None and crop.size:
             emb = self._embed(crop)
@@ -100,6 +107,8 @@ class Perception:
     def _match(self, kind, vec):
         if kind == "hand":
             return self._store.match("hand", vec, "l2", config.HAND_MATCH_THRESH)
+        if kind == "hand2":  # 84차원 → L2 거리 스케일 ↑ 보정
+            return self._store.match("hand2", vec, "l2", config.HAND_MATCH_THRESH * 1.5)
         return self._store.match("object", vec, "cosine", config.OBJ_MATCH_THRESH)
 
     def _embed(self, crop):

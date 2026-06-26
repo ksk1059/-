@@ -5,8 +5,15 @@ const userEl = document.getElementById("user");
 const thinkingEl = document.getElementById("thinking");
 let userTimer = null;
 
+const previewEl = document.getElementById("preview");
+
 window.dolswe = {
   setThinking(on) { thinkingEl.classList.toggle("on", !!on); },
+  setPreview(b64) {
+    if (!b64) { previewEl.hidden = true; previewEl.src = ""; return; }
+    previewEl.src = "data:image/jpeg;base64," + b64;
+    previewEl.hidden = false;
+  },
   setBotCaption(text) { botEl.textContent = text ? "돌쇠: " + text : ""; },
   setUserCaption(text) {
     userEl.textContent = text ? "너: " + text : "";
@@ -53,4 +60,12 @@ micBtn.addEventListener("click", async () => {
   if (!window.pywebview) return;
   const on = await window.pywebview.api.toggle_mic();
   renderMic(on);
+});
+
+// 카메라 프리뷰 on/off
+const camBtn = document.getElementById("cam");
+camBtn.addEventListener("click", async () => {
+  if (!window.pywebview) return;
+  const on = await window.pywebview.api.toggle_preview();
+  camBtn.classList.toggle("off", !on);
 });

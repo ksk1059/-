@@ -1,9 +1,20 @@
 # dolswe/app.py
 import os, threading, queue, json, time, faulthandler
 faulthandler.enable()  # 네이티브 크래시(segfault) 발생 시 C 스택을 stderr(→로그)에 덤프
+from dolswe import config
+
+# torch/BLAS가 전 코어를 독식하지 않게 캡 (torch import 전에 env 세팅). 대화 중 비전·TTS·
+# LLM이 코어를 두고 오버서브스크립션되는 걸 막아 간헐 끊김 완화.
+for _v in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
+    os.environ.setdefault(_v, str(config.TORCH_NUM_THREADS))
+try:
+    import torch
+    torch.set_num_threads(config.TORCH_NUM_THREADS)
+except Exception:
+    pass
+
 import webview
 import cv2
-from dolswe import config
 from dolswe.shared_state import SharedContext
 from dolswe.brain import Brain
 from dolswe.tts import TtsWorker
@@ -11,6 +22,17 @@ from dolswe.stt import SttWorker
 from dolswe.vision_world import VisionWorld
 from dolswe.perception import Perception
 from dolswe.teach import TeachStore, parse_label, is_teaching
+from dolswe import preview
+
+import re as _re
+# 사용자가 "본 것"을 물을 때만 카메라 컨텍스트 주입 (평소엔 빼서 혼잣말 묘사 방지)
+_VISION_Q = _re.compile(
+    r"보여|보이|뭐.{0,3}(있|보|들)|무슨\s*색|몇.{0,2}명|들고|입었|입고|손|앞에|누구|이거|저거|장면")
+
+
+def _wants_vision(text):
+    return bool(_VISION_Q.search(text or ""))
+
 
 class Dolswe:
     def __init__(self):
@@ -30,6 +52,7 @@ class Dolswe:
         self.stt = None
         self._gen = 0  # FIX 4: barge-in generation counter
         self._responding = False  # 응답 처리 중이면 인사 양보
+        self._preview_on = False  # 카메라 프리뷰 창 on/off
 
     def _open_camera(self):
         # Win11에서 기본 MSMF 백엔드는 멈추거나 못 여는 경우 많음 → DSHOW 우선, 0~3 스캔
@@ -66,6 +89,38 @@ class Dolswe:
 
     def _frame(self):
         return self._latest_frame
+
+    # --- 카메라 프리뷰 (메인 UI 통합, 토글) ---
+    def toggle_preview(self):
+        self._preview_on = not self._preview_on
+        if not self._preview_on:
+            self._js("dolswe.setPreview(null)")  # 끄면 창 숨김
+        return self._preview_on
+
+    def _preview_loop(self):
+        while True:
+            if not (self._preview_on and self.ready):
+                time.sleep(0.2)
+                continue
+            frame = self._latest_frame
+            if frame is None:
+                time.sleep(0.1)
+                continue
+            snap = self.ctx.snapshot()
+            info = [f"사람 {snap.get('people_count', 0)}명  옷색 {snap.get('color') or '-'}"]
+            if snap.get("percept"):
+                info.append(f"인식: {snap['percept']}")
+            if snap.get("scene"):
+                info.append(f"장면: {snap['scene']}")
+            boxes = self.vision_world.last_boxes if self.vision_world else []
+            pts = self.perception.last_hand_pts if self.perception else None
+            try:
+                b64 = preview.render(frame, boxes, pts, info)
+            except Exception:
+                b64 = None
+            if b64:
+                self._js(f"dolswe.setPreview('{b64}')")
+            time.sleep(1 / 12.0)
 
     def _js(self, code):
         # FIX 2: guard on both window existence and page-ready flag
@@ -112,7 +167,8 @@ class Dolswe:
         self._js(f"dolswe.setUserCaption({json.dumps(text, ensure_ascii=False)})")
         if self._try_teach(text):   # 가르침이면 LLM 안 거치고 바로 학습+확인
             return
-        self._enqueue(text)
+        # 카메라 컨텍스트는 "물어볼 때만" 주입 → 안 물으면 혼잣말로 장면 안 떠듦
+        self._enqueue(text, use_context=_wants_vision(text))
 
     # --- teachable 지각 ---
     def _on_unknown_percept(self, kind, vec):
@@ -120,7 +176,7 @@ class Dolswe:
         if self._responding or not self.input_q.empty() or self._pending:
             return
         self._pending = (kind, vec, time.time())
-        q = "이 손 모양 뭐야? 뭐라고 부르는지 알려줘." if kind == "hand" \
+        q = "이 손 모양 뭐야? 뭐라고 부르는지 알려줘." if kind in ("hand", "hand2") \
             else "저거 뭐야? 이름 알려줘."
         self._js(f"dolswe.setBotCaption({json.dumps(q, ensure_ascii=False)})")
         if self.tts:
@@ -150,6 +206,7 @@ class Dolswe:
         self._user_input(text)
 
     def _on_stt_final(self, text):
+        print(f"[input] STT -> {text!r}", flush=True)  # 출처 확인용 (mic off인데 들어오면 누수)
         self._user_input(text)
 
     def _on_stt_partial(self, text):
@@ -234,6 +291,7 @@ class Dolswe:
             print("STT 비활성(마이크 없음?):", e)
             self.stt = None
         threading.Thread(target=self._respond_loop, daemon=True).start()
+        threading.Thread(target=self._preview_loop, daemon=True).start()  # 프리뷰(토글 시만 송출)
         # LLM 미리 메모리에 올려 첫 응답 콜드스타트 제거
         threading.Thread(target=self.brain.warmup, daemon=True).start()
 
@@ -251,6 +309,8 @@ class _Api:
         self._app.on_user_text(text)
     def toggle_mic(self):
         return self._app.toggle_mic()
+    def toggle_preview(self):
+        return self._app.toggle_preview()
     def quit(self):
         if self._app.window:
             self._app.window.destroy()

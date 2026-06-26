@@ -10,6 +10,13 @@ body { margin: 0; height: 100vh; background: #fff; color: #111;
   font-size: 15px; font-weight: 700; line-height: 38px; cursor: pointer;
   background: var(--accent); color: #fff; border: none; border-radius: 8px; }
 #mic.off { background: #ccc; color: #666; }
+#cam { position: fixed; top: 12px; left: 110px; z-index: 10; height: 40px; padding: 0 14px;
+  font-size: 15px; font-weight: 700; line-height: 38px; cursor: pointer;
+  background: var(--accent); color: #fff; border: none; border-radius: 8px; }
+#cam.off { background: #ccc; color: #666; }
+#preview { position: fixed; top: 60px; right: 16px; z-index: 9; width: 360px;
+  max-width: 34vw; border: 2px solid var(--accent); border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
 #stage { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; }
 #logo { width: 320px; height: 320px; z-index: 2; transition: transform 0.08s; }
 #ripple { position: absolute; width: 320px; height: 320px; border-radius: 50%;

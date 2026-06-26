@@ -29,6 +29,7 @@ class VisionWorld:
         self._pos_frames = 0
         self._neg_frames = 0
         self._last_greet = -1e9
+        self.last_boxes = []  # 프리뷰용: [(x1,y1,x2,y2,label,is_person)]
 
     def start(self):
         self._running = True
@@ -67,6 +68,7 @@ class VisionWorld:
         r = res[0]
         boxes = r.boxes
         if boxes is None or len(boxes) == 0:
+            self.last_boxes = []
             return 0, None, None, None
         cls = boxes.cls.cpu().numpy().astype(int)
         conf = boxes.conf.cpu().numpy()
@@ -98,6 +100,18 @@ class VisionWorld:
                 big_obj_area, big_obj_box = area, xywh[i]
         scene = ", ".join(labels) if labels else None
         obj_crop = self._crop(frame, big_obj_box) if big_obj_box is not None else None
+        # 프리뷰용 박스 (xywh→xyxy, 신뢰도 임계 통과분만)
+        boxes = []
+        for i, c in enumerate(cls):
+            en = names[c]
+            is_p = en == "person"
+            if is_p and conf[i] < config.PERSON_CONF:
+                continue
+            cx, cy, bw, bh = xywh[i]
+            boxes.append((int(cx - bw / 2), int(cy - bh / 2),
+                          int(cx + bw / 2), int(cy + bh / 2),
+                          "사람" if is_p else (self._ko.get(en) or en), is_p))
+        self.last_boxes = boxes
         return count, color, scene, obj_crop
 
     def _crop(self, frame, box_xywh):
