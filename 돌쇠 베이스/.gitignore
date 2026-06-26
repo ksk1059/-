@@ -12,3 +12,6 @@ dolswe.log
 
 # 런타임 메모리(잔)
 data/
+
+# CLIP 가중치 (clip.load가 자동 다운로드)
+weights/

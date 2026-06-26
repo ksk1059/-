@@ -8,7 +8,8 @@ LLM_MODEL = "exaone3.5:2.4b"  # Ollama (대안: "qwen2.5:3b")
 LLM_KEEP_ALIVE = "30m"      # 모델 메모리 상주 (턴 사이 재로드 방지 = 핵심)
 LLM_NUM_PREDICT = 150       # 응답 최대 토큰 (짧게 → 빠르게)
 LLM_NUM_CTX = 8192          # 컨텍스트 길이 = "잔" 윈도우 (확보한 자원만큼 키움)
-LLM_NUM_THREAD = 10         # CPU 스레드 (제스처 제거로 비전 경량화 → LLM에 더 할당)
+LLM_NUM_THREAD = 6          # CPU 스레드. 생성 중 비전(mediapipe/YOLO/CLIP)·TTS 굶김 방지
+                            # (너무 높이면 대화 중 카메라 인식이 끊김)
 LLM_TEMPERATURE = 0.5       # 낮을수록 일관·집중 (주제 이탈/횡설수설 감소)
 
 # "잔" 메모리 (대화 누적·압축·소멸)

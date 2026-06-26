@@ -20,6 +20,7 @@ class SttWorker:
         self._audio_q = queue.Queue()
         self._running = False
         self._enabled = True   # 마이크 on/off
+        self._flush = False    # 토글 경계에서 버퍼 폐기 신호
         self._thread = None
 
     def start(self):
@@ -32,11 +33,15 @@ class SttWorker:
 
     def set_enabled(self, on):
         self._enabled = bool(on)
+        self._flush = True   # 켜고/끄는 순간 진행 중 버퍼 폐기 (경계 누수 방지)
+        print(f"[mic] {'ON' if self._enabled else 'OFF'}", flush=True)
 
     def is_enabled(self):
         return self._enabled
 
     def _callback(self, indata, frames, time_info, status):
+        if not self._enabled:   # 마이크 off → 오디오를 파이프라인에 아예 안 넣음
+            return
         self._audio_q.put(indata.copy())
 
     def _loop(self):
@@ -49,8 +54,9 @@ class SttWorker:
                     block = self._audio_q.get(timeout=0.5)
                 except queue.Empty:
                     continue
-                if not self._enabled:   # 마이크 off → 버퍼 비우고 무시
+                if self._flush or not self._enabled:  # off이거나 토글 직후 → 버퍼 폐기
                     buf, silence = [], 0
+                    self._flush = False
                     continue
                 rms = float(np.sqrt(np.mean(block ** 2)))
                 if rms >= SILENCE_RMS:

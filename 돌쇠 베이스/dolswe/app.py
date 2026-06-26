@@ -1,5 +1,6 @@
 # dolswe/app.py
-import os, threading, queue, json, time
+import os, threading, queue, json, time, faulthandler
+faulthandler.enable()  # 네이티브 크래시(segfault) 발생 시 C 스택을 stderr(→로그)에 덤프
 import webview
 import cv2
 from dolswe import config
@@ -20,6 +21,7 @@ class Dolswe:
         self.ready = False
         self.cap = self._open_camera()
         self._latest_frame = None  # grabber가 채움 (두 비전 스레드의 동시 cap.read 경합 방지)
+        self._running_cam = True   # grabber 루프 가동 플래그
         self.tts = None  # FIX 1: defer construction to start_workers
         self.vision_world = None   # YOLO-World: 인원/옷색/장면 + 인사 트리거
         self.perception = None     # teachable 지각 (손/사물 → 사용자가 가르침)
@@ -43,11 +45,23 @@ class Dolswe:
 
     def _grab_loop(self):
         # 단일 스레드만 cap.read() (동시 호출은 멈춤/손상 유발). 최신 프레임만 보관.
-        while self.cap and self.cap.isOpened():
-            ok, f = self.cap.read()
+        fails = 0
+        while self._running_cam:
+            ok, f = (self.cap.read() if self.cap and self.cap.isOpened() else (False, None))
             if ok:
                 self._latest_frame = f
+                fails = 0
             else:
+                fails += 1
+                if fails == 30:  # ~0.3s 연속 실패 → 카메라 끊김 추정, 재연결 시도
+                    print("[cam] 프레임 실패 연속 → 재연결 시도", flush=True)
+                    try:
+                        if self.cap:
+                            self.cap.release()
+                    except Exception:
+                        pass
+                    self.cap = self._open_camera()
+                    fails = 0
                 time.sleep(0.01)
 
     def _frame(self):

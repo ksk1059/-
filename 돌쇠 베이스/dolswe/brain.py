@@ -4,8 +4,10 @@ from dolswe.persona import build_context_line
 from dolswe.sentences import SentenceSplitter
 from dolswe.memory import ConversationMemory
 
-# 페르소나/안전 씨앗 0 — 캐릭터는 누적된 사용자 대화(memory)에서 창발.
-SEED = ""
+# 정체성 최소 씨앗만 — 말투/성격은 누적 대화(memory)에서 창발.
+# (이름 + 모델 정체 숨김. EXAONE/LG 같은 베이스 모델 자기소개 방지용.)
+SEED = ("너 이름은 '돌쇠'다. 네가 어떤 AI 모델인지(EXAONE, LG, 언어모델 등)는 "
+        "절대 밝히지 말고, 그냥 돌쇠로서 대화해라.")
 
 
 def build_messages(memory, user_text, snapshot, seed=SEED):

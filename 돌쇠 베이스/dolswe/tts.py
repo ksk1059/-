@@ -1,10 +1,18 @@
-import os, threading, queue, tempfile
+import os, re, threading, queue, tempfile
 os.environ.setdefault("MECABRC", r"C:\mecabkodic\mecabrc")  # 안전장치(없어도 동작)
 import numpy as np
 import soundfile as sf
 import sounddevice as sd
 from melo.api import TTS
 from dolswe.audio_utils import amplitude_envelope
+
+# 한글/영문/숫자/기본 문장부호만 허용. 이모지·기호는 MeloTTS의 C++ g2p/MeCab를
+# 네이티브 크래시(프로세스 종료, 트레이스백 없음)시킬 수 있어 합성 전에 제거.
+_TTS_ALLOWED = re.compile(r"[^가-힣ㄱ-ㅣ0-9A-Za-z\s.,?!~…\-'\"()%]")
+
+
+def clean_for_tts(text):
+    return re.sub(r"\s+", " ", _TTS_ALLOWED.sub("", text or "")).strip()
 
 class TtsWorker:
     def __init__(self, on_amplitude=None, on_done=None, on_speak=None):
@@ -52,14 +60,18 @@ class TtsWorker:
             except queue.Empty:
                 continue
             self._interrupt.clear()
+            speakable = clean_for_tts(text)
+            if not speakable:
+                self._on_speak(text)  # 말할 게 없어도(이모지뿐 등) 자막은 띄움
+                continue
             try:
-                samples, rate = self._synth(text)
+                samples, rate = self._synth(speakable)
             except Exception as e:
                 print("TTS 합성 실패:", e)
                 continue
             if self._interrupt.is_set():
                 continue
-            self._on_speak(text)  # 자막을 실제 재생 시점에 띄움 (음성과 싱크)
+            self._on_speak(text)  # 자막은 원문(읽기용), 실제 재생 시점에 띄움
             self._on_amplitude(amplitude_envelope(samples, n_bins=20))
             sd.play(samples, rate)
             sd.wait()
