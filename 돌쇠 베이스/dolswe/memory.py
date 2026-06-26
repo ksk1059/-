@@ -7,6 +7,46 @@ import os, json, re, threading, time
 _FACT = re.compile(
     r"좋아|싫어|이름|나는|난\s|내가|취미|전공|사는|살아|일해|먹|관심|꿈|목표|살이|학교|회사")
 
+# 영구 고정("기억해/외워/잊지마") 트리거 + 사실 추출
+_PIN = re.compile(
+    r"(영구(히|하게)?\s*)?(기억\s*해\s*(둬|줘|주라|줄래)?|외워\s*(둬|줘)?|잊지\s*마라?|명심해|꼭\s*기억해?)")
+
+# 관점 정규화: 고정 기억은 "나/너"를 3인칭으로 바꿔 봇이 주어를 헷갈리지 않게.
+# (?<![가-힣])...(?![가-힣]) 로 단어 내부(나무, 나라)는 건드리지 않음.
+_PERSPECTIVE = [
+    (re.compile(r"(?<![가-힣])내가(?![가-힣])"), "사용자가"),
+    (re.compile(r"(?<![가-힣])나는(?![가-힣])"), "사용자는"),
+    (re.compile(r"(?<![가-힣])나도(?![가-힣])"), "사용자도"),
+    (re.compile(r"(?<![가-힣])나를(?![가-힣])"), "사용자를"),
+    (re.compile(r"(?<![가-힣])나의(?![가-힣])"), "사용자의"),
+    (re.compile(r"(?<![가-힣])날(?![가-힣])"), "사용자를"),
+    (re.compile(r"(?<![가-힣])내(?=\s)"), "사용자"),
+    (re.compile(r"(?<![가-힣])나(?![가-힣])"), "사용자"),
+    (re.compile(r"(?<![가-힣])너는(?![가-힣])"), "돌쇠는"),
+    (re.compile(r"(?<![가-힣])너를(?![가-힣])"), "돌쇠를"),
+    (re.compile(r"(?<![가-힣])너의(?![가-힣])"), "돌쇠의"),
+    (re.compile(r"(?<![가-힣])네가(?![가-힣])"), "돌쇠가"),
+    (re.compile(r"(?<![가-힣])니가(?![가-힣])"), "돌쇠가"),
+    (re.compile(r"(?<![가-힣])널(?![가-힣])"), "돌쇠를"),
+    (re.compile(r"(?<![가-힣])너(?![가-힣])"), "돌쇠"),
+]
+
+
+def normalize_perspective(text):
+    for pat, repl in _PERSPECTIVE:
+        text = pat.sub(repl, text)
+    return text
+
+
+def extract_pin(text):
+    # "기억해" 류 명령이면 트리거 빼고 남는 사실 반환. 질문(?)이나 빈 내용이면 None.
+    t = (text or "").strip()
+    if not _PIN.search(t) or t.endswith("?"):
+        return None
+    fact = _PIN.sub("", t)
+    fact = re.sub(r"\s+", " ", fact).strip(" ,.!~·-")
+    return fact if len(fact) >= 2 else None
+
 
 def approx_tokens(s):
     # 토크나이저 없이 대략치 (한·영 혼용 보수적). 예산 비교용이라 정밀할 필요 없음.
@@ -24,7 +64,20 @@ class ConversationMemory:
         self._lock = threading.RLock()
         self.hot = []   # [{role, text, ts, imp}]  role: "user"|"bot"
         self.warm = []  # [{text, ts, imp}]  압축된 요약
+        self.core = []  # [{text, ts}]  영구 고정 기억 — 절대 소멸 안 함, 항상 주입
         self._load()
+
+    # --- 영구 고정 기억 ---
+    def pin(self, text):
+        text = normalize_perspective((text or "").strip())  # 나→사용자, 너→돌쇠
+        if not text:
+            return False
+        with self._lock:
+            if any(c["text"] == text for c in self.core):  # 중복 방지
+                return False
+            self.core.append({"text": text, "ts": time.time()})
+            self._save()
+            return True
 
     # --- 중요도 ---
     def _salience(self, role, text):
@@ -54,6 +107,10 @@ class ConversationMemory:
             msgs = []
             if seed:
                 msgs.append({"role": "system", "content": seed})
+            if self.core:  # 영구 고정 기억 — 항상 먼저 주입
+                lines = "\n".join(f"- {c['text']}" for c in self.core)
+                msgs.append({"role": "system",
+                             "content": "[고정 기억] (사용자=상대, 돌쇠=너 자신)\n" + lines})
             if self.warm:
                 lines = "\n".join(f"- {w['text']}" for w in self.warm)
                 msgs.append({"role": "system", "content": "[기억]\n" + lines})
@@ -108,6 +165,7 @@ class ConversationMemory:
                     d = json.load(f)
                 self.hot = d.get("hot", [])
                 self.warm = d.get("warm", [])
+                self.core = d.get("core", [])
             except Exception:
                 pass
 
@@ -117,6 +175,7 @@ class ConversationMemory:
         try:
             os.makedirs(os.path.dirname(self._path), exist_ok=True)
             with open(self._path, "w", encoding="utf-8") as f:
-                json.dump({"hot": self.hot, "warm": self.warm}, f, ensure_ascii=False)
+                json.dump({"hot": self.hot, "warm": self.warm, "core": self.core},
+                          f, ensure_ascii=False)
         except Exception:
             pass

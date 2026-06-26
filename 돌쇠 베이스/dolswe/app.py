@@ -22,6 +22,7 @@ from dolswe.stt import SttWorker
 from dolswe.vision_world import VisionWorld
 from dolswe.perception import Perception
 from dolswe.teach import TeachStore, parse_label, is_teaching
+from dolswe.memory import extract_pin
 from dolswe import preview
 
 import re as _re
@@ -167,6 +168,8 @@ class Dolswe:
         self._js(f"dolswe.setUserCaption({json.dumps(text, ensure_ascii=False)})")
         if self._try_teach(text):   # 가르침이면 LLM 안 거치고 바로 학습+확인
             return
+        if self._try_pin(text):     # "기억해" 류 → 영구 고정 기억
+            return
         # 카메라 컨텍스트는 "물어볼 때만" 주입 → 안 물으면 혼잣말로 장면 안 떠듦
         self._enqueue(text, use_context=_wants_vision(text))
 
@@ -201,6 +204,18 @@ class Dolswe:
                 self.tts.say(ack)
             return True
         return False
+
+    def _try_pin(self, text):
+        # "기억해/외워/잊지마" → 사실을 영구 CORE에 고정 (잔과 달리 소멸 안 함)
+        fact = extract_pin(text)
+        if not fact:
+            return False
+        added = self.brain.memory.pin(fact)
+        ack = f"기억해뒀어: {fact}" if added else f"이미 기억하고 있어: {fact}"
+        self._js(f"dolswe.setBotCaption({json.dumps(ack, ensure_ascii=False)})")
+        if self.tts:
+            self.tts.say(ack)
+        return True
 
     def on_user_text(self, text):          # pywebview API (타이핑)
         self._user_input(text)

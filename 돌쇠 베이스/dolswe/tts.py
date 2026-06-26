@@ -45,13 +45,23 @@ class TtsWorker:
         self._q.put(text)
 
     def stop_current(self):
+        # 인터럽트 신호만 set (sd.stop()을 외부 스레드에서 부르면 PortAudio
+        # access violation으로 크래시). 재생 중단은 TTS 스레드가 직접 수행.
         self._interrupt.set()
-        sd.stop()
         try:
             while True:
                 self._q.get_nowait()
         except queue.Empty:
             pass
+
+    def _play(self, samples, rate):
+        # 자기(TTS) 스레드 소유 OutputStream에 청크로 write. 인터럽트 시 즉시 중단.
+        ch = samples.shape[1] if samples.ndim > 1 else 1
+        with sd.OutputStream(samplerate=rate, channels=ch, dtype=samples.dtype) as out:
+            i, n = 0, len(samples)
+            while i < n and not self._interrupt.is_set():
+                out.write(samples[i:i + 2048])
+                i += 2048
 
     def _loop(self):
         while self._running:
@@ -73,7 +83,9 @@ class TtsWorker:
                 continue
             self._on_speak(text)  # 자막은 원문(읽기용), 실제 재생 시점에 띄움
             self._on_amplitude(amplitude_envelope(samples, n_bins=20))
-            sd.play(samples, rate)
-            sd.wait()
+            try:
+                self._play(samples, rate)
+            except Exception as e:
+                print("TTS 재생 실패:", e)
             if self._q.empty():
                 self._on_done()
