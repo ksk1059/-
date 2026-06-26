@@ -8,6 +8,8 @@ def test_parse_label_variants():
     assert parse_label("방금 건 인사라고 불러") == "인사"
     assert parse_label("브이") == "브이"            # 맨 답
     assert parse_label("이건 손하트라고 해") == "손하트"
+    assert parse_label("생수병이야.") == "생수병"      # 끝 마침표
+    assert parse_label("이거 핸드폰이야...") == "핸드폰"  # 말줄임
 
 
 def test_parse_label_rejects_long_sentence():

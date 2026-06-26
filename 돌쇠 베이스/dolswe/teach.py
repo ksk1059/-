@@ -64,8 +64,10 @@ def parse_label(text):
     t = (text or "").strip()
     t = _PREFIX.sub("", t)
     t = _QUOTE.sub("", t)
+    t = re.sub(r"[\s.,!?…~]+$", "", t)  # 끝 문장부호 먼저 제거 (없어야 야/copula가 잡힘)
     t = _COPULA.sub("", t)
     t = _strip_copula_ya(t).strip()
+    t = re.sub(r"[\s.,!?…~]+$", "", t)  # copula 뒤 잔여 부호도 정리
     t = re.sub(r"\s+", " ", t)
     if not t or len(t) > 12:
         return None
