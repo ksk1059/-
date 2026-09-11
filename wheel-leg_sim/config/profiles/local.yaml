@@ -1,0 +1,24 @@
+# Local profile: "does this run at all".
+# Same build, same scene, same code as the server. Only these values differ.
+
+run:
+  areas: 1
+  out: runs/local
+  time_scale: 1.0
+  # A baseline, not 'policy'. Editor Play cannot be given command line arguments and has no
+  # trainer attached, so controller_type 'policy' would leave ML-Agents with nothing to get
+  # actions from; it falls back to Heuristic and emits an all-zero action every step. The run
+  # then completes normally and logs a full episode for a robot that was never commanded.
+  # The bootstrap now refuses that combination outright. This is also exactly the controller
+  # SPEC 10-A items 4 and 5 ask a human to watch, so it is the right local default.
+  controller_type: baseline_gait_pd
+
+physics:
+  enhanced_determinism: true   # local checks compare trajectories, so keep it on
+
+terrain:
+  difficulty: [0.0, 0.0]       # collapses the ranges in env.yaml to flat ground
+
+logging:
+  enabled: true                # on locally too: a logger first run on the server is a logger untested
+  flush_interval_frames: 500

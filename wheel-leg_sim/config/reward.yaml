@@ -1,0 +1,20 @@
+# Reward weights.
+#
+# Every term in SPEC.md section 4 exists here and is always computed. A term is
+# switched off by setting its weight to 0, never by deleting it, so the server can
+# enable it without a code change.
+#
+# UNFOUNDED INITIAL VALUES. Not tuned against any learning curve.
+
+lin_vel_tracking: 1.0      # + exp(-|vx_cmd - vx|^2 / sigma)
+ang_vel_tracking: 0.5      # + exp(-|wz_cmd - wz|^2 / sigma)
+tracking_sigma: 0.25
+posture_up: 0.5            # + dot(body up, world up)
+lateral_velocity: -0.5     # - vy^2
+joint_torque: -0.0002      # - sum(leg joint torque^2)
+wheel_torque: -0.0002      # - sum(wheel torque^2)
+leg_action_rate: -0.01     # - sum((leg action - prev)^2)
+wheel_action_rate: -0.01   # - sum((wheel action - prev)^2)
+wheel_slip: -0.1           # - sum(contact wheel surface speed - body speed)^2
+alive: 0.1                 # + per surviving step
+termination: -10.0         # - once, on early termination

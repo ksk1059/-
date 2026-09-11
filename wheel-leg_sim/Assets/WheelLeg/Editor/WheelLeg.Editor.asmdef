@@ -1,0 +1,24 @@
+{
+    "name": "WheelLeg.Editor",
+    "rootNamespace": "WheelLeg.EditorTools",
+    "references": [
+        "WheelLeg.Runtime",
+        "Unity.ML-Agents",
+        "Unity.ML-Agents.Editor",
+        "Unity.InferenceEngine",
+        "Unity.Robotics.UrdfImporter",
+        "Unity.Robotics.UrdfImporter.Editor",
+        "Unity.EditorCoroutines.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

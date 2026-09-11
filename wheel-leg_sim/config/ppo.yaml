@@ -1,0 +1,40 @@
+# ML-Agents trainer configuration (read by mlagents-learn, not by the build).
+#
+# behavior name must match BehaviorParameters.BehaviorName on the agent prefab.
+#
+# UNFOUNDED INITIAL VALUES. max_steps and every hyperparameter below are placeholders
+# until a first learning curve exists (SPEC.md section 11).
+
+default_settings: null
+
+behaviors:
+  WheelLegGo2W:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 4096
+      buffer_size: 40960
+      learning_rate: 3.0e-4
+      beta: 5.0e-3
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    keep_checkpoints: 20
+    # Short interval on purpose: the server is unmanaged and can reboot without notice
+    # (SERVER_OPS_1.md section 4-3). Resume with `mlagents-learn ... --resume`.
+    checkpoint_interval: 200000
+    max_steps: 100000          # local smoke value; set from measured throughput on the server
+    time_horizon: 1000
+    summary_freq: 10000
+
+torch_settings:
+  device: cpu                  # physics is the bottleneck, not the network

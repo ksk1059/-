@@ -1,0 +1,21 @@
+# Server profile: the same build, scaled up.
+# If anything outside this file has to change to run on the server, SPEC.md section 0
+# has been violated and the local verification result is void.
+
+run:
+  areas: 32                    # match to core count with the admin before launching
+  out: runs/server
+  time_scale: 1.0
+
+physics:
+  # Off during training buys throughput; evaluation runs must turn it back on with
+  # --determinism true (SERVER_OPS_1.md section 4-2).
+  enhanced_determinism: false
+
+terrain:
+  difficulty: [0.0, 1.0]       # full range
+
+logging:
+  enabled: true
+  flush_interval_frames: 4000
+  max_total_bytes: 10737418240 # shared disk with two other users; keep this bounded

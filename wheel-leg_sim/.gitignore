@@ -1,0 +1,57 @@
+# Unity generates these and they are large; the project rebuilds them from Assets/ and
+# Packages/. Library alone is several GB.
+/Library/
+/Temp/
+/Obj/
+/obj/
+/Build/
+/Builds/
+/Logs/
+/UserSettings/
+/MemoryCaptures/
+/Recordings/
+
+# IDE project files, regenerated from the asmdefs
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.suo
+.vs/
+.idea/
+.vscode/
+
+# Run output. These are experiment data, not source: keep them somewhere with room for them
+# (a 32-area run writes about 4.3 GB per hour) and reference them by run id.
+/runs/
+/results/
+
+# Imported model assets. The .onnx comes out of a training run and the .sentis is generated
+# from it by WheelLeg/Convert Model To Sentis, so neither belongs in the source history.
+/Assets/Models/*.onnx
+/Assets/Models/*.sentis
+/Assets/Models/*.onnx.meta
+/Assets/Models/*.sentis.meta
+
+# Written at build time from `git rev-parse HEAD`
+/Assets/Resources/build_commit.txt
+/Assets/Resources/build_commit.txt.meta
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# NOT ignored, on purpose:
+#   config/                      every value a run depends on
+#   Assets/Robots/go2w/          the patched URDF and its meshes; tools/patch_urdf.py
+#                                reproduces the URDF from upstream byte-for-byte
+#   Assets/Resources/Go2W.prefab the prefab the runtime loads by name
+#   Assets/Scenes/               the single scene that ships
+#   tools/                       the launcher and the URDF patch
+
+# ML-Agents writes profiler timers here every run; generated, not source
+/Assets/ML-Agents/
+/Assets/ML-Agents.meta
