@@ -1,0 +1,41 @@
+{
+  "name": "poljjack",
+  "keyframes": [
+    {
+      "angles": {
+        "LF": 100,
+        "RF": 100,
+        "LB": 100,
+        "RB": 100
+      },
+      "hold_ms": 1000
+    },
+    {
+      "angles": {
+        "LF": 0,
+        "RF": 0,
+        "LB": 0,
+        "RB": 0
+      },
+      "hold_ms": 500
+    },
+    {
+      "angles": {
+        "LF": 100,
+        "RF": 100,
+        "LB": 100,
+        "RB": 100
+      },
+      "hold_ms": 1000
+    },
+    {
+      "angles": {
+        "LF": 0,
+        "RF": 0,
+        "LB": 0,
+        "RB": 0
+      },
+      "hold_ms": 500
+    }
+  ]
+}

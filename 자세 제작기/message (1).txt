@@ -1,0 +1,246 @@
+import serial
+import time
+
+
+PORT = "COM5"
+BAUD_RATE = 9600
+
+LEGS = ["LF", "RF", "LB", "RB"]
+
+
+# -------------------------------------------------
+# 아두이노 연결
+# -------------------------------------------------
+
+arduino = serial.Serial(PORT, BAUD_RATE, timeout=0.1)
+time.sleep(2)
+arduino.reset_input_buffer()
+
+
+# -------------------------------------------------
+# 응답 읽기
+# -------------------------------------------------
+
+def read_response(timeout_sec=20, idle_sec=0.3):
+    lines = []
+    start_time = time.time()
+    last_read_time = time.time()
+
+    while time.time() - start_time < timeout_sec:
+        line = arduino.readline().decode("utf-8", errors="ignore").strip()
+
+        if line:
+            lines.append(line)
+            last_read_time = time.time()
+
+            if line == "OK" or line.startswith("ERR"):
+                break
+        else:
+            if lines and time.time() - last_read_time > idle_sec:
+                break
+
+    return lines
+
+
+# -------------------------------------------------
+# 기본 전송
+# -------------------------------------------------
+
+def send_raw(command, timeout_sec=20):
+    print("SEND:", command)
+
+    arduino.write((command + "\n").encode("utf-8"))
+    arduino.flush()
+
+    response = read_response(timeout_sec)
+
+    for line in response:
+        print(line)
+
+    return response
+
+
+# -------------------------------------------------
+# 일반 명령
+# -------------------------------------------------
+
+def move_motor(motor_num, angle):
+    # 예: move_motor(1, 360) -> 1:360
+    if motor_num < 1 or motor_num > 4:
+        raise ValueError("motor_num은 1~4만 가능")
+
+    timeout_sec = calc_timeout(angle)
+    return send_raw(f"{motor_num}:{int(angle)}", timeout_sec)
+
+
+def move_front(angle):
+    # 앞쪽 모터 1, 2 제어
+    timeout_sec = calc_timeout(angle)
+    return send_raw(f"F:{int(angle)}", timeout_sec)
+
+
+def move_back(angle):
+    # 뒤쪽 모터 3, 4 제어
+    timeout_sec = calc_timeout(angle)
+    return send_raw(f"B:{int(angle)}", timeout_sec)
+
+
+def move_all(angle):
+    # 전체 모터 제어
+    timeout_sec = calc_timeout(angle)
+    return send_raw(f"ALL:{int(angle)}", timeout_sec)
+
+
+def set_zero():
+    # 현재 위치를 기준 0으로 저장
+    return send_raw("SET", 5)
+
+
+def reset_to_zero():
+    # SET으로 잡은 위치로 실제 복귀
+    return send_raw("RE", 30)
+
+
+def print_position():
+    # 현재 위치 확인
+    return send_raw("POS", 5)
+
+
+# -------------------------------------------------
+# 패킷 명령
+# -------------------------------------------------
+
+def make_angle_text(angle):
+    # 패킷 각도 형식: +0090, -0360
+    angle = int(angle)
+
+    if angle < -9999 or angle > 9999:
+        raise ValueError("패킷 각도는 -9999 ~ 9999 사이만 가능")
+
+    sign = "+" if angle >= 0 else "-"
+    number = abs(angle)
+
+    return f"{sign}{number:04d}"
+
+
+def make_packet(blocks):
+    # 패킷 구조: @명령개수 + 명령블록들
+    if len(blocks) < 1 or len(blocks) > 6:
+        raise ValueError("패킷 명령은 1~6개만 가능")
+
+    return "@" + f"{len(blocks):02d}" + "".join(blocks)
+
+
+def packet_set_angle(leg, angle):
+    # A = SET 기준 절대 각도 이동
+    # 예: packet_set_angle("LF", 90) -> @01LFA+0090
+    leg = leg.upper()
+
+    if leg not in LEGS:
+        raise ValueError("leg는 LF, RF, LB, RB만 가능")
+
+    block = leg + "A" + make_angle_text(angle)
+    packet = make_packet([block])
+
+    return send_raw(packet, calc_timeout(angle))
+
+
+def packet_set_angles(commands):
+    # 여러 다리를 동시에 절대 각도로 이동
+    # 예: packet_set_angles({"LF": 90, "RF": -90})
+    blocks = []
+    max_angle = 0
+
+    for leg, angle in commands.items():
+        leg = leg.upper()
+
+        if leg not in LEGS:
+            raise ValueError("leg는 LF, RF, LB, RB만 가능")
+
+        blocks.append(leg + "A" + make_angle_text(angle))
+        max_angle = max(max_angle, abs(int(angle)))
+
+    packet = make_packet(blocks)
+
+    return send_raw(packet, calc_timeout(max_angle))
+
+
+def packet_reset_leg(leg):
+    # RE = 해당 다리 위치값만 0으로 저장
+    # 실제로 움직여서 복귀하는 명령은 아님
+    # 예: packet_reset_leg("LF") -> @01LFRE00000
+    leg = leg.upper()
+
+    if leg not in LEGS:
+        raise ValueError("leg는 LF, RF, LB, RB만 가능")
+
+    block = leg + "RE00000"
+    packet = make_packet([block])
+
+    return send_raw(packet, 5)
+
+
+def packet_reset_legs(legs):
+    # 여러 다리 위치값을 동시에 0으로 저장
+    # 예: packet_reset_legs(["LF", "RF"])
+    blocks = []
+
+    for leg in legs:
+        leg = leg.upper()
+
+        if leg not in LEGS:
+            raise ValueError("leg는 LF, RF, LB, RB만 가능")
+
+        blocks.append(leg + "RE00000")
+
+    packet = make_packet(blocks)
+
+    return send_raw(packet, 5)
+
+
+# -------------------------------------------------
+# 이동 시간 계산
+# -------------------------------------------------
+
+def calc_timeout(angle):
+    # 각도가 클수록 모터 이동 시간이 오래 걸림
+    angle = abs(int(angle))
+
+    return max(5, int(angle / 360 * 5) + 5)
+
+
+# -------------------------------------------------
+# 테스트 예시
+# -------------------------------------------------
+
+if __name__ == "__main__":
+    try:
+        set_zero()
+
+        move_motor(1, 360)
+        move_motor(1, -360)
+
+        move_front(180)
+        move_back(-180)
+
+        move_all(90)
+
+        print_position()
+
+        reset_to_zero()
+
+        # 패킷 방식 예시
+        packet_set_angle("LF", 90)
+        packet_set_angle("RF", -90)
+
+        packet_set_angles({
+            "LF": 0,
+            "RF": 0,
+            "LB": 90,
+            "RB": -90
+        })
+
+        packet_reset_leg("LF")
+
+    finally:
+        arduino.close()
