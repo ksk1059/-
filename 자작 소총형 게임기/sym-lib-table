@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "bang_lcsc")(type "KiCad")(uri "${KIPRJMOD}/lib/bang_lcsc.kicad_sym")(options "")(descr "JLC/LCSC parts (easyeda2kicad)"))
+)

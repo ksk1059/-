@@ -1,0 +1,112 @@
+** Drc report for bang.kicad_pcb **
+** Created on 2026-10-03T23:05:28 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 15 DRC violations **
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 F.Cu; 구역 최소 스포크 수 2; 실제 1)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(15.2500 mm, 14.7500 mm): Pad 2 [GND] of U2 on F.Cu
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 B.Cu, 고립된 섬에 연결된 1 스포크)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_B' [GND] on B.Cu, priority 0
+    @(22.4500 mm, 27.8700 mm): PTH pad 2 [GND] of J8
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 F.Cu; 구역 최소 스포크 수 2; 실제 1)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(17.2800 mm, 16.6000 mm): Pad 2 [GND] of C7 on F.Cu
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 F.Cu; 구역 최소 스포크 수 2; 실제 1)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(19.9000 mm, 12.0200 mm): Pad 2 [GND] of C9 on F.Cu
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 B.Cu, 고립된 섬에 연결된 1 스포크)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_B' [GND] on B.Cu, priority 0
+    @(36.2800 mm, 27.8700 mm): PTH pad 2 [GND] of J1
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 B.Cu, 고립된 섬에 연결된 2 스포크)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_B' [GND] on B.Cu, priority 0
+    @(9.4500 mm, 27.8700 mm): PTH pad 2 [GND] of J5
+[starved_thermal]: 불완전한 영역에 대한 열 방출 연결 (레이어 F.Cu; 구역 최소 스포크 수 2; 실제 1)
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(9.4500 mm, 27.8700 mm): PTH pad 2 [GND] of J5
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(27.5000 mm, 11.7500 mm): Track [+3V3] on F.Cu, length 0.4914 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(1.0875 mm, 8.4765 mm): Track [+3V3] on B.Cu, length 0.1125 mm
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: 기판 구성 제약 실크; warning
+    @(49.0000 mm, 30.0000 mm): Segment on Edge.Cuts
+    @(27.4800 mm, 30.4900 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: 기판 구성 제약 실크; warning
+    @(49.0000 mm, 30.0000 mm): Segment on Edge.Cuts
+    @(36.4200 mm, 30.4900 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: 기판 구성 제약 실크; warning
+    @(1.0000 mm, 0.0000 mm): Segment on Edge.Cuts
+    @(30.6000 mm, 0.0000 mm): Segment of U1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: 기판 구성 제약 실크; warning
+    @(1.0000 mm, 0.0000 mm): Segment on Edge.Cuts
+    @(30.6000 mm, 0.2700 mm): Segment of U1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: 기판 구성 제약 실크; warning
+    @(1.0000 mm, 0.0000 mm): Segment on Edge.Cuts
+    @(48.6000 mm, -5.1800 mm): Segment of U1 on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(12.5000 mm, 15.0500 mm): Circle of Y1 on F.Silkscreen
+    @(11.6000 mm, 14.5500 mm): Pad 1 [IMU_XIN] of Y1 on F.Cu
+
+** Found 9 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(15.0800 mm, 16.6000 mm): Pad 2 [GND] of C6 on F.Cu
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(27.6200 mm, 23.6900 mm): PTH pad 4 [GND] of J1
+    @(28.7500 mm, 22.9300 mm): Pad A1B12 [GND] of J1 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(35.1500 mm, 22.9300 mm): Pad B1A12 [GND] of J1 on F.Cu
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+    @(0.0000 mm, 0.0000 mm): Zone 'GND_F' [GND] on F.Cu, priority 0
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

@@ -1,0 +1,6 @@
+LCSC Part Number,Quantity,Customer Part Number,Note
+C60474,20,100nF 16V X7R 0402,"C4,C6,C7,C9,C16 (replaces C1525)"
+C5448891,20,10uF 25V X5R 0805,"C1,C8 (replaces C15850)"
+C106235,20,1k 0402,"R17,R19 (replaces C11702)"
+C380313,20,1uF 50V X5R 0603,"C5 (replaces C15849)"
+C51940130,3,SM04B-SRSS-TB compatible,"J6 Qwiic (replaces C160404)"

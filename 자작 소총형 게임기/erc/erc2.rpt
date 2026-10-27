@@ -1,0 +1,369 @@
+ERC report (2026-09-30T18:17:44, Encoding UTF8)
+Report includes: Errors, Warnings, Exclusions
+
+***** Sheet /
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 1450 mils): Symbol #PWR01 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 1550 mils): Symbol #PWR03 [+5V]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 2450 mils): Symbol #PWR04 [+5V]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 2550 mils): Symbol #PWR02 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2250 mils): Symbol #PWR08 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2350 mils): Symbol #PWR07 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(2800 mils, 1600 mils): Symbol R1 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2450 mils): Symbol #PWR06 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2550 mils): Symbol #PWR05 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2800 mils, 1900 mils): Symbol #PWR09 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 1600 mils): Symbol R2 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 1900 mils): Symbol #PWR10 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1600 mils, 3500 mils): Symbol #PWR11 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4300 mils, 1900 mils): Symbol #PWR14 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 3500 mils): Symbol #PWR12 [+5V]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4300 mils, 2100 mils): Symbol #PWR13 [+5V]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 2700 mils): Symbol #PWR17 [+5V]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 3000 mils): Symbol C1 [C]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 2700 mils): Symbol #PWR19 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 3300 mils): Symbol #PWR18 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 3000 mils): Symbol C2 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 3300 mils): Symbol #PWR20 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 2700 mils): Symbol #PWR21 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 5500 mils): Symbol #PWR67 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 3000 mils): Symbol C16 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 5600 mils): Symbol #PWR68 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 3300 mils): Symbol #PWR22 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5500 mils, 2000 mils): Symbol #PWR16 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2400 mils, 5500 mils): Symbol #PWR70 [+5V]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2400 mils, 5600 mils): Symbol #PWR71 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2000 mils, 6100 mils): Symbol #PWR69 [+3V3]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 3300 mils): Symbol #FLG01 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 3300 mils): Symbol #PWR23 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3600 mils, 5500 mils): Symbol #PWR73 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3600 mils, 5600 mils): Symbol #PWR74 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(2000 mils, 6400 mils): Symbol R13 [R]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6000 mils, 3300 mils): Symbol #FLG02 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6000 mils, 3300 mils): Symbol #PWR24 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 6100 mils): Symbol #PWR72 [+3V3]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5800 mils, 3900 mils): Symbol #FLG03 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5800 mils, 3900 mils): Symbol #PWR25 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 6400 mils): Symbol R14 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 5500 mils): Symbol #PWR76 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 5600 mils): Symbol #PWR77 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7000 mils, 2500 mils): Symbol #PWR26 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7000 mils, 2600 mils): Symbol #PWR29 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 6100 mils): Symbol #PWR75 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 6400 mils): Symbol R15 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 4700 mils): Symbol #PWR30 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 6100 mils): Symbol #PWR78 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 8350 mils): Symbol #PWR79 [+5V]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 5000 mils): Symbol C3 [C]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 6400 mils): Symbol R16 [R]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2450 mils, 8200 mils): Symbol #PWR80 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 4700 mils): Symbol #PWR32 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 5300 mils): Symbol #PWR31 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 5000 mils): Symbol C4 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 5300 mils): Symbol #PWR33 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9050 mils, 2450 mils): Symbol #PWR27 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9050 mils, 3950 mils): Symbol #PWR28 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5300 mils, 8350 mils): Symbol #PWR83 [+5V]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5300 mils, 8450 mils): Symbol #PWR84 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4100 mils, 9150 mils): Symbol #PWR81 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3400 mils, 9700 mils): Symbol R17 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3800 mils, 9700 mils): Symbol R18 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 4700 mils): Symbol #PWR34 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 5000 mils): Symbol R3 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3800 mils, 10000 mils): Symbol #PWR82 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 5700 mils): Symbol #PWR37 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9700 mils, 5000 mils): Symbol C5 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9700 mils, 5300 mils): Symbol #PWR35 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 6000 mils): Symbol R4 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 8500 mils): Symbol R19 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7400 mils, 9200 mils): Symbol #PWR85 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(10750 mils, 4950 mils): Symbol #PWR36 [GND]
+[lib_symbol_mismatch]: 심볼 'LED'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7700 mils, 9200 mils): Symbol D2 [LED]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(10750 mils, 5950 mils): Symbol #PWR38 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2450 mils): Symbol #PWR39 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2550 mils): Symbol #PWR41 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2750 mils): Symbol #PWR43 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2850 mils): Symbol #PWR44 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 4400 mils): Symbol #PWR46 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 3250 mils): Symbol #PWR45 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 4700 mils): Symbol C6 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5000 mils): Symbol #PWR47 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 4400 mils): Symbol #PWR48 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5500 mils): Symbol #PWR59 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 4700 mils): Symbol C7 [C]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5800 mils): Symbol R11 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5000 mils): Symbol #PWR49 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 4400 mils): Symbol #PWR50 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5500 mils): Symbol #PWR60 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 4700 mils): Symbol C8 [C]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5800 mils): Symbol R12 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 5000 mils): Symbol #PWR51 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12900 mils, 4700 mils): Symbol C9 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12900 mils, 5000 mils): Symbol #PWR52 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13500 mils, 4400 mils): Symbol #PWR53 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13500 mils, 4700 mils): Symbol R5 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 2350 mils): Symbol #PWR42 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13100 mils, 6300 mils): Symbol C10 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 2650 mils): Symbol #PWR40 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13900 mils, 4400 mils): Symbol #PWR54 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13100 mils, 6600 mils): Symbol #PWR61 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13900 mils, 4700 mils): Symbol R6 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 4400 mils): Symbol #PWR55 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 4700 mils): Symbol R7 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14700 mils, 4700 mils): Symbol R8 [R]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14100 mils, 6300 mils): Symbol C11 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14700 mils, 5000 mils): Symbol #PWR56 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14100 mils, 6600 mils): Symbol #PWR62 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15100 mils, 4400 mils): Symbol #PWR57 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(15100 mils, 4700 mils): Symbol R9 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14650 mils, 6100 mils): Symbol #PWR66 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14850 mils, 6100 mils): Symbol #PWR63 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15500 mils, 4400 mils): Symbol #PWR58 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14950 mils, 6100 mils): Symbol #PWR64 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(15500 mils, 4700 mils): Symbol R10 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15350 mils, 6100 mils): Symbol #PWR65 [GND]
+
+ ** ERC messages: 119  Errors 0  Warnings 119
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

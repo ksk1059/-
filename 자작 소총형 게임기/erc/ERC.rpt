@@ -1,0 +1,719 @@
+ERC report (2026-09-30T18:13:18, Encoding UTF8)
+Report includes: Errors, Warnings, Exclusions
+
+***** Sheet /
+[pin_not_driven]: Input pin not driven by any Output pins
+    ; error
+    @(1750 mils, 3200 mils): Symbol U4 Pin 1 [1, 입력, 선]
+[pin_not_driven]: Input pin not driven by any Output pins
+    ; error
+    @(1750 mils, 3800 mils): Symbol U4 Pin 3 [3, 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 1450 mils): Symbol #PWR01 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 1550 mils): Symbol #PWR03 [+5V]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 1450 mils): Symbol J1 Pin A1B12 [GND, 지정하지 않음, 선]
+    @(1100 mils, 1450 mils): Symbol #PWR01 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 1550 mils): Symbol J1 Pin A4B9 [VBUS, 지정하지 않음, 선]
+    @(1100 mils, 1550 mils): Symbol #PWR03 Hidden pin 1 [+5V, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 1750 mils): Symbol J1 Pin A5 [CC1, 지정하지 않음, 선]
+    @(2800 mils, 1450 mils): Symbol R1 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 1850 mils): Symbol J1 Pin B7 [DN2, 지정하지 않음, 선]
+    @(1750 mils, 3200 mils): Symbol U4 Pin 1 [1, 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 1950 mils): Symbol J1 Pin A6 [DP1, 지정하지 않음, 선]
+    @(1250 mils, 2150 mils): Symbol J1 Pin B6 [DP2, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 2050 mils): Symbol J1 Pin A7 [DN1, 지정하지 않음, 선]
+    @(1250 mils, 1850 mils): Symbol J1 Pin B7 [DN2, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 2150 mils): Symbol J1 Pin B6 [DP2, 지정하지 않음, 선]
+    @(1750 mils, 3800 mils): Symbol U4 Pin 3 [3, 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 2350 mils): Symbol J1 Pin B5 [CC2, 지정하지 않음, 선]
+    @(3200 mils, 1450 mils): Symbol R2 Pin 1 [수동, 선]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 2450 mils): Symbol #PWR04 [+5V]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 2450 mils): Symbol J1 Pin B4A9 [VBUS, 지정하지 않음, 선]
+    @(1100 mils, 2450 mils): Symbol #PWR04 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1100 mils, 2550 mils): Symbol #PWR02 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1250 mils, 2550 mils): Symbol J1 Pin B1A12 [GND, 지정하지 않음, 선]
+    @(1100 mils, 2550 mils): Symbol #PWR02 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1950 mils, 2250 mils): Symbol J1 Pin 4 [EH, 지정하지 않음, 선]
+    @(2100 mils, 2250 mils): Symbol #PWR08 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1950 mils, 2350 mils): Symbol J1 Pin 3 [EH, 지정하지 않음, 선]
+    @(1950 mils, 2250 mils): Symbol J1 Pin 4 [EH, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2250 mils): Symbol #PWR08 [GND]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1950 mils, 2450 mils): Symbol J1 Pin 2 [EH, 지정하지 않음, 선]
+    @(1950 mils, 2350 mils): Symbol J1 Pin 3 [EH, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2350 mils): Symbol #PWR07 [GND]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1950 mils, 2550 mils): Symbol J1 Pin 1 [EH, 지정하지 않음, 선]
+    @(1950 mils, 2450 mils): Symbol J1 Pin 2 [EH, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(2800 mils, 1600 mils): Symbol R1 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2450 mils): Symbol #PWR06 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2100 mils, 2550 mils): Symbol #PWR05 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2800 mils, 1900 mils): Symbol #PWR09 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 1600 mils): Symbol R2 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 1900 mils): Symbol #PWR10 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1600 mils, 3500 mils): Symbol #PWR11 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4300 mils, 1900 mils): Symbol #PWR14 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4300 mils, 2000 mils): Symbol #PWR15 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4300 mils, 2100 mils): Symbol #PWR13 [+5V]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 2700 mils): Symbol #PWR17 [+5V]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4450 mils, 1900 mils): Symbol U3 Pin 1 [GND, 지정하지 않음, 선]
+    @(4300 mils, 1900 mils): Symbol #PWR14 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4450 mils, 2000 mils): Symbol U3 Pin 2 [VOUT, 지정하지 않음, 선]
+    @(4300 mils, 2000 mils): Symbol #PWR15 Hidden pin 1 [+3V3, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4450 mils, 2100 mils): Symbol U3 Pin 3 [VIN, 지정하지 않음, 선]
+    @(4300 mils, 2100 mils): Symbol #PWR13 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 3000 mils): Symbol C1 [C]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 2700 mils): Symbol #PWR19 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4000 mils, 3300 mils): Symbol #PWR18 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 3000 mils): Symbol C2 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 3300 mils): Symbol #PWR20 [GND]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 2700 mils): Symbol #PWR21 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 5500 mils): Symbol #PWR67 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 3000 mils): Symbol C16 [C]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1350 mils, 5500 mils): Symbol J2 Pin 1 [1, 지정하지 않음, 선]
+    @(1200 mils, 5500 mils): Symbol #PWR67 Hidden pin 1 [+3V3, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(5350 mils, 2000 mils): Symbol U3 Pin 4 [VOUT, 지정하지 않음, 선]
+    @(5500 mils, 2000 mils): Symbol #PWR16 Hidden pin 1 [+3V3, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 5600 mils): Symbol #PWR68 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1350 mils, 5600 mils): Symbol J2 Pin 2 [2, 지정하지 않음, 선]
+    @(1200 mils, 5600 mils): Symbol #PWR68 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 3300 mils): Symbol #PWR22 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5500 mils, 2000 mils): Symbol #PWR16 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(1350 mils, 5700 mils): Symbol J2 Pin 3 [3, 지정하지 않음, 선]
+    @(2000 mils, 6550 mils): Symbol R13 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2400 mils, 5500 mils): Symbol #PWR70 [+5V]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(2550 mils, 5500 mils): Symbol J3 Pin 1 [1, 지정하지 않음, 선]
+    @(2400 mils, 5500 mils): Symbol #PWR70 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2400 mils, 5600 mils): Symbol #PWR71 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(2550 mils, 5600 mils): Symbol J3 Pin 2 [2, 지정하지 않음, 선]
+    @(2400 mils, 5600 mils): Symbol #PWR71 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(2550 mils, 5700 mils): Symbol J3 Pin 3 [3, 지정하지 않음, 선]
+    @(3200 mils, 6550 mils): Symbol R14 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2000 mils, 6100 mils): Symbol #PWR69 [+3V3]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 3300 mils): Symbol #FLG01 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 3300 mils): Symbol #PWR23 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3600 mils, 5500 mils): Symbol #PWR73 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(3750 mils, 5500 mils): Symbol J4 Pin 1 [1, 지정하지 않음, 선]
+    @(3600 mils, 5500 mils): Symbol #PWR73 Hidden pin 1 [+3V3, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3600 mils, 5600 mils): Symbol #PWR74 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(2000 mils, 6400 mils): Symbol R13 [R]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(3750 mils, 5600 mils): Symbol J4 Pin 2 [2, 지정하지 않음, 선]
+    @(3600 mils, 5600 mils): Symbol #PWR74 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(3750 mils, 5700 mils): Symbol J4 Pin 3 [3, 지정하지 않음, 선]
+    @(4400 mils, 6550 mils): Symbol R15 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6000 mils, 3300 mils): Symbol #FLG02 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6000 mils, 3300 mils): Symbol #PWR24 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 6100 mils): Symbol #PWR72 [+3V3]
+[lib_symbol_mismatch]: 심볼 'PWR_FLAG'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5800 mils, 3900 mils): Symbol #FLG03 [PWR_FLAG]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5800 mils, 3900 mils): Symbol #PWR25 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3200 mils, 6400 mils): Symbol R14 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 5500 mils): Symbol #PWR76 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4800 mils, 5600 mils): Symbol #PWR77 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4950 mils, 5500 mils): Symbol J5 Pin 1 [1, 지정하지 않음, 선]
+    @(4800 mils, 5500 mils): Symbol #PWR76 Hidden pin 1 [+3V3, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7000 mils, 2500 mils): Symbol #PWR26 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7000 mils, 2600 mils): Symbol #PWR29 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4950 mils, 5600 mils): Symbol J5 Pin 2 [2, 지정하지 않음, 선]
+    @(4800 mils, 5600 mils): Symbol #PWR77 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 6100 mils): Symbol #PWR75 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(4950 mils, 5700 mils): Symbol J5 Pin 3 [3, 지정하지 않음, 선]
+    @(5600 mils, 6550 mils): Symbol R16 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 2500 mils): Symbol U1 Pin 1 [GND, 지정하지 않음, 선]
+    @(7000 mils, 2500 mils): Symbol #PWR26 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 2600 mils): Symbol U1 Pin 2 [3V3, 지정하지 않음, 선]
+    @(7000 mils, 2600 mils): Symbol #PWR29 Hidden pin 1 [+3V3, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 2700 mils): Symbol U1 Pin 3 [EN, 지정하지 않음, 선]
+    @(9300 mils, 5150 mils): Symbol R3 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 2800 mils): Symbol U1 Pin 4 [IO4, 지정하지 않음, 선]
+    @(2000 mils, 6550 mils): Symbol R13 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 2900 mils): Symbol U1 Pin 5 [IO5, 지정하지 않음, 선]
+    @(3200 mils, 6550 mils): Symbol R14 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 3000 mils): Symbol U1 Pin 6 [IO6, 지정하지 않음, 선]
+    @(4400 mils, 6550 mils): Symbol R15 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(4400 mils, 6400 mils): Symbol R15 [R]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 3100 mils): Symbol U1 Pin 7 [IO7, 지정하지 않음, 선]
+    @(5600 mils, 6550 mils): Symbol R16 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 3600 mils): Symbol U1 Pin 12 [IO8, 지정하지 않음, 선]
+    @(12100 mils, 5950 mils): Symbol R12 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 입력 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 3700 mils): Symbol U1 Pin 13 [IO19, 지정하지 않음, 선]
+    @(3050 mils, 3200 mils): Symbol U4 Pin 6 [6, 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 입력 유형의 핀이 연결됨
+    ; warning
+    @(7150 mils, 3800 mils): Symbol U1 Pin 14 [IO20, 지정하지 않음, 선]
+    @(3050 mils, 3800 mils): Symbol U4 Pin 4 [4, 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 4700 mils): Symbol #PWR30 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 6100 mils): Symbol #PWR78 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(1200 mils, 8350 mils): Symbol #PWR79 [+5V]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 5000 mils): Symbol C3 [C]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(1350 mils, 8350 mils): Symbol J7 Pin 1 [1, 지정하지 않음, 선]
+    @(1200 mils, 8350 mils): Symbol #PWR79 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(5600 mils, 6400 mils): Symbol R16 [R]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(1350 mils, 8450 mils): Symbol J7 Pin 2 [2, 지정하지 않음, 선]
+    @(4100 mils, 8600 mils): Symbol Q1 Pin 3 [D, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(2450 mils, 8200 mils): Symbol #PWR80 [+5V]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 4700 mils): Symbol #PWR32 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(2600 mils, 8200 mils): Symbol D1 Pin 1 [-, 지정하지 않음, 선]
+    @(2450 mils, 8200 mils): Symbol #PWR80 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(6800 mils, 5300 mils): Symbol #PWR31 [GND]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(3000 mils, 8200 mils): Symbol D1 Pin 2 [+, 지정하지 않음, 선]
+    @(4100 mils, 8600 mils): Symbol Q1 Pin 3 [D, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 5000 mils): Symbol C4 [C]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(7700 mils, 4200 mils): Symbol U1 Pin 17 [IO9, 지정하지 않음, 선]
+    @(11700 mils, 5950 mils): Symbol R11 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(7800 mils, 4200 mils): Symbol U1 Pin 18 [IO10, 지정하지 않음, 선]
+    @(12250 mils, 3650 mils): Symbol U2 Pin 14 [H_INTN, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 5300 mils): Symbol #PWR33 [GND]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(7900 mils, 4200 mils): Symbol U1 Pin 19 [IO11, 지정하지 않음, 선]
+    @(12250 mils, 3350 mils): Symbol U2 Pin 11 [NRST, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(8000 mils, 4200 mils): Symbol U1 Pin 20 [IO12, 지정하지 않음, 선]
+    @(3400 mils, 9550 mils): Symbol R17 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(8100 mils, 4200 mils): Symbol U1 Pin 21 [IO13, 지정하지 않음, 선]
+    @(7200 mils, 8350 mils): Symbol R19 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(8900 mils, 2450 mils): Symbol U1 Pin 40 [GND, 지정하지 않음, 선]
+    @(9050 mils, 2450 mils): Symbol #PWR27 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9050 mils, 2450 mils): Symbol #PWR27 [GND]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(3800 mils, 8800 mils): Symbol Q1 Pin 1 [G, 지정하지 않음, 선]
+    @(3800 mils, 9550 mils): Symbol R18 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(8900 mils, 3750 mils): Symbol U1 Pin 27 [IO0, 지정하지 않음, 선]
+    @(9300 mils, 6150 mils): Symbol R4 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(8900 mils, 3950 mils): Symbol U1 Pin 41 [EP, 지정하지 않음, 선]
+    @(9050 mils, 3950 mils): Symbol #PWR28 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9050 mils, 3950 mils): Symbol #PWR28 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(4100 mils, 9000 mils): Symbol Q1 Pin 2 [S, 지정하지 않음, 선]
+    @(4100 mils, 9150 mils): Symbol #PWR81 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+5V'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5300 mils, 8350 mils): Symbol #PWR83 [+5V]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(5450 mils, 8350 mils): Symbol J8 Pin 1 [1, 지정하지 않음, 선]
+    @(5300 mils, 8350 mils): Symbol #PWR83 Hidden pin 1 [+5V, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(5300 mils, 8450 mils): Symbol #PWR84 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(4100 mils, 9150 mils): Symbol #PWR81 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(5450 mils, 8450 mils): Symbol J8 Pin 2 [2, 지정하지 않음, 선]
+    @(5300 mils, 8450 mils): Symbol #PWR84 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3400 mils, 9700 mils): Symbol R17 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(3800 mils, 9700 mils): Symbol R18 [R]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 4700 mils): Symbol #PWR34 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 5000 mils): Symbol R3 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(3800 mils, 10000 mils): Symbol #PWR82 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 5700 mils): Symbol #PWR37 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9700 mils, 5000 mils): Symbol C5 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(9700 mils, 5300 mils): Symbol #PWR35 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(9300 mils, 6000 mils): Symbol R4 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7200 mils, 8500 mils): Symbol R19 [R]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(10200 mils, 4950 mils): Symbol SW1 Pin 1 [1, 지정하지 않음, 선]
+    @(9700 mils, 4850 mils): Symbol C5 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(10600 mils, 4950 mils): Symbol SW1 Pin 2 [2, 지정하지 않음, 선]
+    @(10750 mils, 4950 mils): Symbol #PWR36 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(7400 mils, 9200 mils): Symbol #PWR85 [GND]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(10200 mils, 5950 mils): Symbol SW2 Pin 1 [1, 지정하지 않음, 선]
+    @(9300 mils, 6150 mils): Symbol R4 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(10750 mils, 4950 mils): Symbol #PWR36 [GND]
+[lib_symbol_mismatch]: 심볼 'LED'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(7700 mils, 9200 mils): Symbol D2 [LED]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(10600 mils, 5950 mils): Symbol SW2 Pin 2 [2, 지정하지 않음, 선]
+    @(10750 mils, 5950 mils): Symbol #PWR38 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(10750 mils, 5950 mils): Symbol #PWR38 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2450 mils): Symbol #PWR39 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2550 mils): Symbol #PWR41 [+3V3]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2750 mils): Symbol #PWR43 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 2850 mils): Symbol #PWR44 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 2450 mils): Symbol U2 Pin 2 [GND, 지정하지 않음, 선]
+    @(12100 mils, 2450 mils): Symbol #PWR39 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 4400 mils): Symbol #PWR46 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 2550 mils): Symbol U2 Pin 3 [VDD, 지정하지 않음, 선]
+    @(12100 mils, 2550 mils): Symbol #PWR41 Hidden pin 1 [+3V3, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 3250 mils): Symbol #PWR45 [GND]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 2650 mils): Symbol U2 Pin 4 [BOOTN, 지정하지 않음, 선]
+    @(13500 mils, 4850 mils): Symbol R5 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 2750 mils): Symbol U2 Pin 5 [PS1, 지정하지 않음, 선]
+    @(12250 mils, 2850 mils): Symbol U2 Pin 6 [PS0/WAKE, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 2850 mils): Symbol U2 Pin 6 [PS0/WAKE, 지정하지 않음, 선]
+    @(12100 mils, 2850 mils): Symbol #PWR44 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 4700 mils): Symbol C6 [C]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 3150 mils): Symbol U2 Pin 9 [CAP, 지정하지 않음, 선]
+    @(12900 mils, 4550 mils): Symbol C9 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 3250 mils): Symbol U2 Pin 10 [CLKSEL0, 지정하지 않음, 선]
+    @(12100 mils, 3250 mils): Symbol #PWR45 Hidden pin 1 [GND, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(12250 mils, 3350 mils): Symbol U2 Pin 11 [NRST, 지정하지 않음, 선]
+    @(13900 mils, 4850 mils): Symbol R6 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5000 mils): Symbol #PWR47 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 4400 mils): Symbol #PWR48 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5500 mils): Symbol #PWR59 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 4700 mils): Symbol C7 [C]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(11700 mils, 5800 mils): Symbol R11 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5000 mils): Symbol #PWR49 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 4400 mils): Symbol #PWR50 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5500 mils): Symbol #PWR60 [+3V3]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 4700 mils): Symbol C8 [C]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12100 mils, 5800 mils): Symbol R12 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12500 mils, 5000 mils): Symbol #PWR51 [GND]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(12900 mils, 4700 mils): Symbol C9 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(12900 mils, 5000 mils): Symbol #PWR52 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13500 mils, 4400 mils): Symbol #PWR53 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13500 mils, 4700 mils): Symbol R5 [R]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 2350 mils): Symbol U2 Pin 28 [VDDIO, 지정하지 않음, 선]
+    @(14300 mils, 2350 mils): Symbol #PWR42 Hidden pin 1 [+3V3, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 2450 mils): Symbol U2 Pin 27 [XIN32, 지정하지 않음, 선]
+    @(13400 mils, 5700 mils): Symbol Y1 Pin 1 [1, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 2550 mils): Symbol U2 Pin 26 [XOUT32/CLKSEL1, 지정하지 않음, 선]
+    @(13800 mils, 5700 mils): Symbol Y1 Pin 2 [2, 지정하지 않음, 선]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 2650 mils): Symbol U2 Pin 25 [GND, 지정하지 않음, 선]
+    @(14300 mils, 2650 mils): Symbol #PWR40 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 2350 mils): Symbol #PWR42 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3150 mils): Symbol U2 Pin 20 [H_SDA/H_MISO/TX, 지정하지 않음, 선]
+    @(12100 mils, 5950 mils): Symbol R12 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3250 mils): Symbol U2 Pin 19 [H_SCL/SCK/RX, 지정하지 않음, 선]
+    @(11700 mils, 5950 mils): Symbol R11 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13100 mils, 6300 mils): Symbol C10 [C]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3350 mils): Symbol U2 Pin 18 [H_CSN, 지정하지 않음, 선]
+    @(14300 mils, 4850 mils): Symbol R7 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 2650 mils): Symbol #PWR40 [GND]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(13400 mils, 5700 mils): Symbol Y1 Pin 1 [1, 지정하지 않음, 선]
+    @(13100 mils, 6150 mils): Symbol C10 Pin 1 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3450 mils): Symbol U2 Pin 17 [SA0/H_MOSI, 지정하지 않음, 선]
+    @(14700 mils, 4550 mils): Symbol R8 Pin 1 [수동, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13900 mils, 4400 mils): Symbol #PWR54 [+3V3]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3550 mils): Symbol U2 Pin 16 [ENV_SDA, 지정하지 않음, 선]
+    @(15500 mils, 4850 mils): Symbol R10 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(14150 mils, 3650 mils): Symbol U2 Pin 15 [ENV_SCL, 지정하지 않음, 선]
+    @(15100 mils, 4850 mils): Symbol R9 Pin 2 [수동, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(13100 mils, 6600 mils): Symbol #PWR61 [GND]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(13900 mils, 4700 mils): Symbol R6 [R]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(13800 mils, 5700 mils): Symbol Y1 Pin 2 [2, 지정하지 않음, 선]
+    @(14100 mils, 6150 mils): Symbol C11 Pin 1 [수동, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 4400 mils): Symbol #PWR55 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14300 mils, 4700 mils): Symbol R7 [R]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14700 mils, 4700 mils): Symbol R8 [R]
+[lib_symbol_mismatch]: 심볼 'C'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(14100 mils, 6300 mils): Symbol C11 [C]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14700 mils, 5000 mils): Symbol #PWR56 [GND]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14100 mils, 6600 mils): Symbol #PWR62 [GND]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15100 mils, 4400 mils): Symbol #PWR57 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(15100 mils, 4700 mils): Symbol R9 [R]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14650 mils, 6100 mils): Symbol #PWR66 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(14650 mils, 6250 mils): Symbol J6 Pin 6 [6, 지정하지 않음, 선]
+    @(14650 mils, 6100 mils): Symbol #PWR66 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14850 mils, 6100 mils): Symbol #PWR63 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(14850 mils, 6250 mils): Symbol J6 Pin 1 [1, 지정하지 않음, 선]
+    @(14850 mils, 6100 mils): Symbol #PWR63 Hidden pin 1 [GND, 전원 입력, 선]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15500 mils, 4400 mils): Symbol #PWR58 [+3V3]
+[lib_symbol_mismatch]: 심볼 '+3V3'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(14950 mils, 6100 mils): Symbol #PWR64 [+3V3]
+[lib_symbol_mismatch]: 심볼 'R'가 라이브러리 'Device'의 복사본과 일치하지 않음
+    ; warning
+    @(15500 mils, 4700 mils): Symbol R10 [R]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(14950 mils, 6250 mils): Symbol J6 Pin 2 [2, 지정하지 않음, 선]
+    @(14950 mils, 6100 mils): Symbol #PWR64 Hidden pin 1 [+3V3, 전원 입력, 선]
+[pin_to_pin]: 지정하지 않음 및 수동 유형의 핀이 연결됨
+    ; warning
+    @(15050 mils, 6250 mils): Symbol J6 Pin 3 [3, 지정하지 않음, 선]
+    @(12100 mils, 5950 mils): Symbol R12 Pin 2 [수동, 선]
+[pin_to_pin]: 지정하지 않음 및 지정하지 않음 유형의 핀이 연결됨
+    ; warning
+    @(15150 mils, 6250 mils): Symbol J6 Pin 4 [4, 지정하지 않음, 선]
+    @(14150 mils, 3250 mils): Symbol U2 Pin 19 [H_SCL/SCK/RX, 지정하지 않음, 선]
+[lib_symbol_mismatch]: 심볼 'GND'가 라이브러리 'power'의 복사본과 일치하지 않음
+    ; warning
+    @(15350 mils, 6100 mils): Symbol #PWR65 [GND]
+[pin_to_pin]: 지정하지 않음 및 전원 입력 유형의 핀이 연결됨
+    ; warning
+    @(15350 mils, 6250 mils): Symbol J6 Pin 5 [5, 지정하지 않음, 선]
+    @(15350 mils, 6100 mils): Symbol #PWR65 Hidden pin 1 [GND, 전원 입력, 선]
+
+ ** ERC messages: 207  Errors 2  Warnings 205
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters
