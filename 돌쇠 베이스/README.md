@@ -1,4 +1,4 @@
-# 돌쇠
+#원시 돌쇠
 
 행사장 대화 AI. 완전 오프라인, CPU 전용.
 
@@ -17,3 +17,4 @@ C:\dolswe_env\Scripts\python.exe -m dolswe.app
 ```bash
 C:\dolswe_env\Scripts\python.exe -m pytest
 ```
+추후 피지컬 ai 돌쇠가 될 예정이었으나 설계가 미흡해 폐기, 추후 리메이크 예정
